@@ -66,11 +66,11 @@ E o servidor irá iniciar em http://127.0.0.1:5000
 | `PUT`  | `/candidatos/<id>`       | Atualiza um candidato existente     |
 | `DELETE`| `/candidatos/<id>`      | Remove um candidato por ID          |
 
-## Estrutura do Banco de Dados
+### Estrutura do Banco de Dados
 
 A aplicação utiliza um banco de dados SQLite chamado `candidatos.db`, que possui uma única tabela:
 
-### 🧾 Tabela: `Candidatos`
+### Tabela: `Candidatos`
 
 | Campo     | Tipo         | Restrições                  |
 |-----------|--------------|-----------------------------|
@@ -80,7 +80,7 @@ A aplicação utiliza um banco de dados SQLite chamado `candidatos.db`, que poss
 | `ira`     | Float        | Obrigatório (NOT NULL)      |
 | `email`   | String(100)  | Obrigatório (NOT NULL)      |
 
-### 📄 Representação em SQL
+### Representação em SQL
 
 ```sql
 CREATE TABLE candidatos (
