@@ -37,7 +37,7 @@ def home():
 @app.route("/candidatos", methods = ["GET"])
 def todos_candidatos():
     all_candidatos = Candidatos.query.all()
-    print("O usuário pediu todos os candidatos")
+    print("O usuário pediu todos os candidatos no banco de dados")
     return jsonify([candidato.to_dict() for candidato in all_candidatos])
 
 @app.route("/candidatos/<int:candidato_id>", methods = ["GET"])
@@ -45,6 +45,9 @@ def candidato_by_id(candidato_id):
     candidato = Candidatos.query.get(candidato_id)
     if candidato: 
         print("O usuário pediu para encontrar um candidato e foi encontrado")
+        _ = candidato.to_dict()
+        for chave, valor in _.items():
+            print(f'{chave} : {valor}')
         return jsonify(candidato.to_dict())
     else:
         print("O usuário pediu para encontrar um candidato e não foi encontrado")
@@ -62,7 +65,10 @@ def inserir_candidato():
                                 email = dados["email"])
     db.session.add(novo_candidato)
     db.session.commit()
-    print("O usuário inseriu um novo candidato no banco de dados")
+    print("O usuário inseriu um novo candidato no banco de dados:")
+    _ = novo_candidato.to_dict()
+    for chave, valor in _.items():
+        print(f'{chave} : {valor}')
     return jsonify(novo_candidato.to_dict())
 
 #PUT
@@ -79,10 +85,13 @@ def trocar_candidato_by_id(candidato_id):
 
         db.session.commit()
         print("O usuário atualizou um candidato no banco de dados")
+        _ = candidato.to_dict()
+        for chave, valor in _.items():
+            print(f'{chave} : {valor}')
         return jsonify(candidato.to_dict())
     else:
         print("O usuário tentou atualizar um candidato no banco de dados mas ele nao existia")
-        jsonify({"erro": "candidato nao encontrado"})
+        return jsonify({"erro": "candidato nao encontrado"})
 
 #DELETE
 @app.route("/candidatos/<int:candidato_id>", methods = ["DELETE"])
@@ -92,6 +101,9 @@ def deletar_candidato_by_id(candidato_id):
         db.session.delete(candidato)
         db.session.commit()
         print("O usuário deletou um candidato do banco de dados")
+        _ = candidato.to_dict()
+        for chave, valor in _.items():
+            print(f'{chave} : {valor}')
         return jsonify({"mensagem" : "candidato deletado"})
     else: 
         print("O usuário tentou deletar um candidato do banco de dados mas esse nao foi encontrado")
