@@ -1,6 +1,6 @@
 # API de Candidatos 
 
-Uma API REST para gerenciar os dados (nome,semestre, ira e e-mail), dos integrantes do processo seletivo da CEOS, construída utilizando Flask e SQLAlchemy.
+Uma API REST para gerenciar os dados (nome,semestre, ira e e-mail), dos integrantes do processo seletivo, construída utilizando Flask e SQLAlchemy.
 
  [Demo / Status](#-demo--status)  
 - [Funcionalidades](#-funcionalidades)  
